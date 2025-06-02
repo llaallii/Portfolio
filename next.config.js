@@ -6,6 +6,10 @@ const nextConfig = {
   images: {
     domains: ['images.unsplash.com'],
   },
+  // Ensure proper module resolution
+  transpilePackages: [],
+  // Fix for deployment issues
+  swcMinify: true,
 }
 
 module.exports = nextConfig
