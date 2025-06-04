@@ -6,13 +6,17 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import { ArrowRight, Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { personalInfo } from '@/data/portfolio-data';
+import { Button } from '@/components/ui/button'
+import type { PersonalInfo } from '@/data/portfolio-data'
 
 // Dynamically import the 3D scene so it's only loaded when needed
-const Hero3D = dynamic(() => import('../ui/hero-3d'), { ssr: false });
+const Hero3D = dynamic(() => import('../ui/hero-3d'), { ssr: false })
 
-export function HeroSection() {
+export interface HeroSectionProps {
+  personalInfo: PersonalInfo
+}
+
+export function HeroSection({ personalInfo }: HeroSectionProps) {
   const shouldReduceMotion = useReducedMotion();
   const [show3D, setShow3D] = useState(false);
 
@@ -29,7 +33,7 @@ export function HeroSection() {
       {!show3D && (
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
       )}
-      {show3D && <Hero3D />}
+      {show3D && <Hero3D autoRotate />}
       <div className="container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -43,7 +47,10 @@ export function HeroSection() {
               {personalInfo.name}
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-3xl mx-auto">
+            {personalInfo.title} based in {personalInfo.location}
+          </p>
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
             {personalInfo.description}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -55,6 +62,9 @@ export function HeroSection() {
             </Button>
             <Button variant="outline" size="lg" asChild>
               <Link href="/projects">View Portfolio</Link>
+            </Button>
+            <Button variant="secondary" size="lg" asChild>
+              <Link href={personalInfo.social.email}>Email Me</Link>
             </Button>
           </div>
           <div className="flex justify-center space-x-4">

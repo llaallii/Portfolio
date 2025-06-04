@@ -32,6 +32,19 @@ export interface Skill {
   icon?: string;
 }
 
+export interface PersonalInfo {
+  name: string
+  title: string
+  email: string
+  location: string
+  description: string
+  social: {
+    github: string
+    linkedin: string
+    email: string
+  }
+}
+
 export const personalInfo = {
   name: "Ratan Bunkar",
   title: "Systems Integration Engineer",
