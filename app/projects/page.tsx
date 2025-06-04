@@ -97,13 +97,35 @@ export default function ProjectsPage() {
                       <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="flex space-x-2">
                           {project.githubUrl && (
-                            <Button size="icon" variant="secondary" className="h-8 w-8">
-                              <Github className="h-4 w-4" />
+                            <Button
+                              asChild
+                              size="icon"
+                              variant="secondary"
+                              className="h-8 w-8"
+                            >
+                              <a
+                                href={project.githubUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <Github className="h-4 w-4" />
+                              </a>
                             </Button>
                           )}
                           {project.liveUrl && (
-                            <Button size="icon" variant="secondary" className="h-8 w-8">
-                              <ExternalLink className="h-4 w-4" />
+                            <Button
+                              asChild
+                              size="icon"
+                              variant="secondary"
+                              className="h-8 w-8"
+                            >
+                              <a
+                                href={project.liveUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <ExternalLink className="h-4 w-4" />
+                              </a>
                             </Button>
                           )}
                         </div>
