@@ -23,7 +23,7 @@ A stunning, responsive portfolio website built with the latest web technologies.
 1. Clone the repository:
 ```bash
 git clone <your-repo-url>
-cd portfolio-website
+cd Portfolio
 ```
 
 2. Install dependencies:
