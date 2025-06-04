@@ -37,7 +37,7 @@ export const personalInfo = {
   title: "Systems Integration Engineer",
   email: "ratanbunkar2@gmail.com",
   location: "Taoyuan City, Taiwan",
-  description: "Systems Integration Engineer specializing in medical device development, test automation, and regulatory compliance. Passionate about creating innovative solutions that bridge engineering excellence with real-world impact.",
+  description: "Bridging Engineering Excellence with Medical Innovation through systems integration, test automation, and regulatory compliance expertise.",
   social: {
     github: "#",
     linkedin: "#",

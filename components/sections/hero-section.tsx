@@ -6,12 +6,20 @@ import Link from 'next/link';
 import { ArrowRight, Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { personalInfo } from '@/data/portfolio-data';
+import { Suspense, lazy } from 'react';
+import HolographicText from '@/components/3d/HolographicText';
+import TechnicalMetrics from '@/components/3d/TechnicalMetrics';
+
+const ThreeDHeroBackground = lazy(() => import('@/components/3d/3DHeroBackground'));
 
 export function HeroSection() {
   return (
-    <section className="relative py-32 px-4 overflow-hidden">
+    <section className="relative py-32 px-4 overflow-hidden h-[100vh]">
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
-      <div className="container relative z-10">
+      <Suspense fallback={null}>
+        <ThreeDHeroBackground />
+      </Suspense>
+      <div className="container relative z-10 flex flex-col items-center justify-center h-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -20,11 +28,12 @@ export function HeroSection() {
         >
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             Hi, I'm{' '}
-            <span className="bg-gradient-to-r from-primary via-blue-400 to-purple-400 bg-clip-text text-transparent">
-              {personalInfo.name}
-            </span>
+            <HolographicText>{personalInfo.name}</HolographicText>
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+          <div className="text-xl md:text-2xl text-muted-foreground mb-2">
+            Systems Integration &amp; Medical Device Engineer
+          </div>
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
             {personalInfo.description}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -38,28 +47,29 @@ export function HeroSection() {
               <Link href="/projects">View My Work</Link>
             </Button>
           </div>
-          <div className="flex justify-center space-x-4">
-            {[
-              { icon: Github, href: personalInfo.social.github, label: 'GitHub' },
-              { icon: Linkedin, href: personalInfo.social.linkedin, label: 'LinkedIn' },
-              { icon: Mail, href: personalInfo.social.email, label: 'Email' }
-            ].map(({ icon: Icon, href, label }, index) => (
-              <motion.div
-                key={label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 + index * 0.1 }}
-              >
-                <Button variant="ghost" size="icon" asChild>
-                  <Link href={href}>
-                    <Icon className="h-5 w-5" />
-                    <span className="sr-only">{label}</span>
-                  </Link>
-                </Button>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+            <div className="flex justify-center space-x-4">
+              {[
+                { icon: Github, href: personalInfo.social.github, label: 'GitHub' },
+                { icon: Linkedin, href: personalInfo.social.linkedin, label: 'LinkedIn' },
+                { icon: Mail, href: personalInfo.social.email, label: 'Email' }
+              ].map(({ icon: Icon, href, label }, index) => (
+                <motion.div
+                  key={label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 + index * 0.1 }}
+                >
+                  <Button variant="ghost" size="icon" asChild>
+                    <Link href={href}>
+                      <Icon className="h-5 w-5" />
+                      <span className="sr-only">{label}</span>
+                    </Link>
+                  </Button>
+                </motion.div>
+              ))}
+            </div>
+            <TechnicalMetrics />
+          </motion.div>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
