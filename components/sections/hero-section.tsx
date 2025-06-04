@@ -1,16 +1,35 @@
 // components/sections/hero-section.tsx
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import { useEffect, useState } from 'react';
 import { ArrowRight, Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { personalInfo } from '@/data/portfolio-data';
 
+// Dynamically import the 3D scene so it's only loaded when needed
+const Hero3D = dynamic(() => import('../ui/hero-3d'), { ssr: false });
+
 export function HeroSection() {
+  const shouldReduceMotion = useReducedMotion();
+  const [show3D, setShow3D] = useState(false);
+
+  useEffect(() => {
+    if (!shouldReduceMotion) {
+      // Only load the heavy 3D scene when the user hasn't opted out of motion
+      setShow3D(true);
+    }
+  }, [shouldReduceMotion]);
+
   return (
     <section className="relative py-32 px-4 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
+      {/* Render a static background for users that prefer reduced motion */}
+      {!show3D && (
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
+      )}
+      {show3D && <Hero3D />}
       <div className="container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
