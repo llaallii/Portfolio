@@ -3,7 +3,8 @@
 
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { HeroSection } from '@/components/sections/hero-section';
+import { HeroSection } from '@/components/sections/hero-section'
+import { personalInfo } from '@/data/portfolio-data'
 import { AboutPreviewSection } from '@/components/sections/about-preview-section';
 import { ExperiencePreviewSection } from '@/components/sections/experience-preview-section';
 import { FeaturedProjectsSection } from '@/components/sections/featured-projects-section';
@@ -14,7 +15,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       <Header />
-      <HeroSection />
+      <HeroSection personalInfo={personalInfo} />
       <AboutPreviewSection />
       <ExperiencePreviewSection />
       <FeaturedProjectsSection />
