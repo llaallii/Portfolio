@@ -5,24 +5,24 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Your Name - Portfolio',
-  description: 'Full Stack Developer & UI/UX Designer passionate about creating beautiful, functional digital experiences',
+  title: 'Ratan Bunkar - Portfolio',
+  description: "Ratan Bunkar's personal portfolio. Full Stack Developer & UI/UX Designer passionate about creating beautiful, functional digital experiences",
   keywords: ['portfolio', 'developer', 'web development', 'react', 'next.js'],
-  authors: [{ name: 'Your Name' }],
-  creator: 'Your Name',
+  authors: [{ name: 'Ratan Bunkar' }],
+  creator: 'Ratan Bunkar',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://yourportfolio.com',
-    title: 'Your Name - Portfolio',
+    url: 'https://ratanbunkar.com',
+    title: 'Ratan Bunkar - Portfolio',
     description: 'Full Stack Developer & UI/UX Designer',
-    siteName: 'Your Name Portfolio',
+    siteName: 'Ratan Bunkar Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Your Name - Portfolio',
+    title: 'Ratan Bunkar - Portfolio',
     description: 'Full Stack Developer & UI/UX Designer',
-    creator: '@yourusername',
+    creator: '@ratanbunkar',
   },
 };
 
