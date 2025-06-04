@@ -30,12 +30,12 @@ export function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button asChild size="lg">
               <Link href="/contact">
-                Get In Touch
+                Start a Conversation
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <Link href="/projects">View My Work</Link>
+              <Link href="/projects">View Portfolio</Link>
             </Button>
           </div>
           <div className="flex justify-center space-x-4">
