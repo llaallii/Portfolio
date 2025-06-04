@@ -18,6 +18,22 @@ A stunning, responsive portfolio website built with the latest web technologies.
 - **Performance** - Optimized for speed and SEO
 - **Accessibility** - Built with accessibility best practices
 
+## 🚁 3D Hero
+
+The hero section supports interactive 3D elements rendered with WebGL. It uses
+React Three Fiber and several helper libraries to handle animations, gestures,
+and scene composition. The main packages are:
+
+- `three` and `@react-three/fiber` for rendering the scene
+- `@react-three/drei` for useful helpers and controls
+- `@react-three/postprocessing` for visual effects
+- `@react-spring/three` for spring-based animations
+- `gsap` for timeline animations
+- `zustand` for lightweight state management
+- `leva` for on-screen controls
+- `@use-gesture/react` for pointer and touch gestures
+- `maath` for math utilities
+
 ## 🛠️ Getting Started
 
 1. Clone the repository:
@@ -26,7 +42,7 @@ git clone <your-repo-url>
 cd Portfolio
 ```
 
-2. Install dependencies:
+2. Install dependencies (required before running the project):
 ```bash
 npm install
 # or
@@ -34,6 +50,8 @@ yarn install
 # or
 pnpm install
 ```
+This command installs all packages, including the libraries used in the 3D hero
+such as `three` and `@react-three/fiber`.
 
 3. Run the development server:
 ```bash
