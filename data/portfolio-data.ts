@@ -52,8 +52,8 @@ export const personalInfo = {
   location: "Taoyuan City, Taiwan",
   description: "Systems Integration Engineer specializing in medical device development, test automation, and regulatory compliance. Passionate about creating innovative solutions that bridge engineering excellence with real-world impact.",
   social: {
-    github: "#",
-    linkedin: "#",
+    github: "https://github.com/llaallii",
+    linkedin: "https://www.linkedin.com/in/ratanlalbunkar/",
     email: "mailto:ratanbunkar2@gmail.com"
   }
 };
