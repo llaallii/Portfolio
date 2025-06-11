@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
-import { ArrowRight, Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button'
 import type { PersonalInfo } from '@/data/portfolio-data'
 
@@ -71,7 +71,6 @@ export function HeroSection({ personalInfo }: HeroSectionProps) {
             {[
               { icon: Github, href: personalInfo.social.github, label: 'GitHub' },
               { icon: Linkedin, href: personalInfo.social.linkedin, label: 'LinkedIn' },
-              { icon: Mail, href: personalInfo.social.email, label: 'Email' }
             ].map(({ icon: Icon, href, label }, index) => (
               <motion.div
                 key={label}
