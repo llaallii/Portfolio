@@ -93,6 +93,11 @@ pnpm dev
 - **Skills** - Technologies you work with
 - **Contact** - Get in touch section
 
+### Contact Form
+Set the `CONTACT_FORM_ENDPOINT` environment variable to the URL of your backend
+or email service that will process form submissions. The app sends a POST
+request with JSON `{ name, email, subject, message }` to this endpoint.
+
 ## 🚀 Deployment
 
 ### Vercel (Recommended)

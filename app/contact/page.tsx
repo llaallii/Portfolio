@@ -53,10 +53,28 @@ export default function ContactPage() {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      if (!res.ok) {
+        throw new Error('Failed to send message');
+      }
+      setStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('Error sending message', error);
+      setStatus('error');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -217,6 +235,15 @@ export default function ContactPage() {
                       <Send className="mr-2 h-4 w-4" />
                       Send Message
                     </Button>
+                    {status === 'success' && (
+                      <p className="text-sm text-green-600 text-center">Message sent successfully.</p>
+                    )}
+                    {status === 'error' && (
+                      <p className="text-sm text-red-600 text-center">Failed to send message. Please try again.</p>
+                    )}
+                    {status === 'loading' && (
+                      <p className="text-sm text-muted-foreground text-center">Sending...</p>
+                    )}
                   </form>
                 </CardContent>
               </Card>
