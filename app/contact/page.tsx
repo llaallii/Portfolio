@@ -111,52 +111,6 @@ export default function ContactPage() {
           </motion.div>
         </div>
       </section>
-
-      {/* Contact Methods */}
-      <section className="py-12 px-4 bg-muted/30">
-        <div className="container">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {contactMethods.map((method, index) => {
-              const Icon = method.icon;
-              return (
-                <motion.div
-                  key={method.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className={`text-center hover:shadow-md transition-shadow ${
-                    method.primary ? 'border-primary/50 bg-primary/5' : ''
-                  }`}>
-                    <CardHeader>
-                      <div className="flex justify-center mb-4">
-                        <div className={`p-3 rounded-full ${
-                          method.primary ? 'bg-primary text-primary-foreground' : 'bg-muted'
-                        }`}>
-                          <Icon className="h-6 w-6" />
-                        </div>
-                      </div>
-                      <CardTitle className="text-lg">{method.title}</CardTitle>
-                      <CardDescription>{method.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      {method.href !== '#' ? (
-                        <Button variant="ghost" size="sm" asChild className="text-sm">
-                          <a href={method.href}>{method.value}</a>
-                        </Button>
-                      ) : (
-                        <p className="text-sm text-muted-foreground">{method.value}</p>
-                      )}
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* Contact Form */}
       <section className="py-20 px-4">
         <div className="container">
@@ -323,6 +277,50 @@ export default function ContactPage() {
                 </div>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+      {/* Contact Methods */}
+      <section className="py-12 px-4 bg-muted/30">
+        <div className="container">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {contactMethods.map((method, index) => {
+              const Icon = method.icon;
+              return (
+                <motion.div
+                  key={method.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  <Card className={`text-center hover:shadow-md transition-shadow ${
+                    method.primary ? 'border-primary/50 bg-primary/5' : ''
+                  }`}>
+                    <CardHeader>
+                      <div className="flex justify-center mb-4">
+                        <div className={`p-3 rounded-full ${
+                          method.primary ? 'bg-primary text-primary-foreground' : 'bg-muted'
+                        }`}>
+                          <Icon className="h-6 w-6" />
+                        </div>
+                      </div>
+                      <CardTitle className="text-lg">{method.title}</CardTitle>
+                      <CardDescription>{method.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      {method.href !== '#' ? (
+                        <Button variant="ghost" size="sm" asChild className="text-sm">
+                          <a href={method.href}>{method.value}</a>
+                        </Button>
+                      ) : (
+                        <p className="text-sm text-muted-foreground">{method.value}</p>
+                      )}
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
