@@ -3,12 +3,9 @@ import { blogPosts } from '@/data/blog-posts';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 
-interface Params {
-  params: { slug: string };
-}
-
-export default function BlogPostPage({ params }: Params) {
-  const post = blogPosts.find((p) => p.slug === params.slug);
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) {
     notFound();
